@@ -41,7 +41,9 @@ function Chronometer() {
   this.resetClick = function() {
     this.currentTime = 0;
   }
-  this.splitClick = function() {
-
+  this.splitClick = function () {
+    var split = [];
+    split.push([this.setClick()[0], this.setClick()[1], this.setClick()[2]]);
+    return split;
   }
 }

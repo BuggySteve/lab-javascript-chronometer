@@ -20,7 +20,6 @@ function printTime() {
 }
 
 function printMinutes() {
-  debugger
   minDec.innerHTML = chronometer.setClick()[0][0];
   minUni.innerHTML = chronometer.setClick()[0][1];
 }
@@ -36,11 +35,12 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+  var splitTime = chronometer.splitClick();
+  var newSplit = $("<li>").html(splitTime).appendTo("ol");
 }
 
 function clearSplits() {
-
+  $("section#splits-container ol li").remove();
 }
 
 function setStopBtn() {
@@ -84,9 +84,11 @@ btnLeft.addEventListener('click', function () {
 btnRight.addEventListener('click', function () {
   switch (this.className) {
     case "btn split":
+      chronometer.splitClick();
       printSplit();
       break;
     case "btn reset":
       chronometer.resetClick();
+      clearSplits();
   }
 });
